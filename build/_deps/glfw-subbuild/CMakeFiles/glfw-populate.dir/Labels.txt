@@ -1,14 +1,14 @@
 # Target labels
  glfw-populate
 # Source files and their labels
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/dee5efce83df565cbd91405fc6c9e4e0/glfw-populate.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/d911496e54b8332d3090fde40919edd8/glfw-populate-complete.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-build.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-configure.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-download.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-install.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-mkdir.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-patch.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-test.rule
-C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-update.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test.rule
+C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update.rule
