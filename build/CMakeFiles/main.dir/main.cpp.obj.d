@@ -240,4 +240,10 @@ CMakeFiles/main.dir/main.cpp.obj: \
  C:/msys64/mingw64/include/c++/14.2.0/cstddef \
  C:/msys64/mingw64/include/c++/14.2.0/bits/uses_allocator.h \
  C:/msys64/mingw64/include/c++/14.2.0/bits/uses_allocator_args.h \
- C:/msys64/mingw64/include/c++/14.2.0/tuple
+ C:/msys64/mingw64/include/c++/14.2.0/tuple \
+ C:/msys64/mingw64/include/c++/14.2.0/vector \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/stl_uninitialized.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/stl_vector.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/stl_bvector.h \
+ C:/msys64/mingw64/include/c++/14.2.0/bits/vector.tcc \
+ C:/msys64/mingw64/include/c++/14.2.0/cstring

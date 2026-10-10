@@ -13,6 +13,8 @@
 #include <cmath>
 #include <ctime>
 #include <string>
+#include <vector>
+#include <cstring>
 
 // global state
 struct Shell {
@@ -25,6 +27,28 @@ struct Shell {
 
     // add other state vars dito for other features
 };
+
+struct Proc {
+    std::string name;
+    int pid;
+    float baseCpu;
+    float memMB;
+    bool alive = true;
+};
+
+// Mutable process list so we can terminate processes
+static std::vector<Proc> g_procs = {
+    {"System",              4,    1.2f,  18.5f, true},
+    {"csopesy_shell.exe",   1204, 3.4f,  64.2f, true},
+    {"explorer.exe",        2210, 2.1f, 112.8f, true},
+    {"TaskManager.exe",     3321, 0.8f,  24.6f, true},
+    {"Notepad.exe",         4120, 0.1f,   9.3f, true},
+    {"audio_service",       888,  0.4f,  15.0f, true},
+    {"network_daemon",      912,  0.6f,  21.7f, true},
+    {"scheduler.exe",       1500, 1.7f,  32.4f, true},
+};
+
+static int g_selectedProcIdx = -1;
 
 static Shell shell;
 static const float taskbarHeight = 52.0f; //
@@ -123,72 +147,148 @@ static void DrawCloseWarning() {
     ImGui::End();
 }
 
-
 static void DrawTaskManager() {
     if (!shell.showTaskManager) return;
 
-    // 1. Increased default window size (e.g., 620 wide x 520 tall)
-    ImGui::SetNextWindowSize(ImVec2(620, 520), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowPos(ImVec2(100, 60), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowSize(ImVec2(620, 480), ImGuiCond_FirstUseEver);
 
     if (ImGui::Begin("Task Manager", &shell.showTaskManager)) {
-        
-        ImGui::Text("Processes: 8 | CPU: 24.5% | Memory: 388 MB / 512 MB");
-        ImGui::Separator();
-        ImGui::Spacing();
+        if (ImGui::BeginTabBar("tm_tabs")) {
 
-        ImGuiTableFlags flags = ImGuiTableFlags_Borders 
-                              | ImGuiTableFlags_RowBg 
-                              | ImGuiTableFlags_ScrollY 
-                              | ImGuiTableFlags_Resizable;
+            
+            // tab 1: Processes
+            if (ImGui::BeginTabItem("Processes")) {
+                float totalCpu = 0.0f;
+                float totalMem = 0.0f;
+                int activeCount = 0;
+                float t = (float)glfwGetTime();
 
-        // 2. ImVec2(0, -38.0f) lets the table expand to fill vertical space,
-        // leaving 38px at the bottom for the "End Process" button
-        if (ImGui::BeginTable("ProcessesTable", 4, flags, ImVec2(0, -38.0f))) {
-            ImGui::TableSetupColumn("Name", ImGuiTableColumnFlags_WidthStretch);
-            ImGui::TableSetupColumn("PID", ImGuiTableColumnFlags_WidthFixed, 60.0f);
-            ImGui::TableSetupColumn("CPU", ImGuiTableColumnFlags_WidthFixed, 80.0f);
-            ImGui::TableSetupColumn("Memory", ImGuiTableColumnFlags_WidthFixed, 90.0f);
-            ImGui::TableHeadersRow();
+                // compute instantaneous animated CPU & tally active memory
+                std::vector<float> currentCpu(g_procs.size());
+                for (size_t i = 0; i < g_procs.size(); i++) {
+                    if (!g_procs[i].alive) continue;
+                    activeCount++;
+                    // Sine-wave wobble so CPU usage feels alive
+                    currentCpu[i] = std::max(0.0f, g_procs[i].baseCpu + 1.4f * std::sin(t * 1.5f + (float)i));
+                    totalCpu += currentCpu[i];
+                    totalMem += g_procs[i].memMB;
+                }
 
-            struct ProcessEntry {
-                const char* name;
-                int pid;
-                const char* cpu;
-                const char* memory;
-            };
+                // reserve 36px at the bottom for footer metrics and buttons
+                ImGuiTableFlags tableFlags = ImGuiTableFlags_Borders 
+                                           | ImGuiTableFlags_RowBg 
+                                           | ImGuiTableFlags_ScrollY 
+                                           | ImGuiTableFlags_Resizable
+                                           | ImGuiTableFlags_Sortable;
 
-            static const ProcessEntry dummyProcs[] = {
-                { "System",                4,   "0.8%",  "12.4 MB" },
-                { "csopesy_kernel.exe",  120,   "4.2%",  "64.0 MB" },
-                { "compositor_glfw.exe", 234,   "9.5%",  "88.2 MB" },
-                { "task_manager.exe",    512,   "1.1%",  "22.1 MB" },
-                { "desktop_clock.dll",   680,   "0.2%",   "4.8 MB" },
-                { "csopesy_shell.exe",   744,   "3.8%",  "31.6 MB" },
-                { "audio_driver.sys",    812,   "0.1%",   "2.2 MB" },
-                { "idle_worker.exe",     990,   "2.4%",  "16.5 MB" }
-            };
+                if (ImGui::BeginTable("procs_table", 4, tableFlags, ImVec2(0, -38.0f))) {
+                    ImGui::TableSetupScrollFreeze(0, 1);
+                    ImGui::TableSetupColumn("Name",   ImGuiTableColumnFlags_WidthStretch | ImGuiTableColumnFlags_DefaultSort, 0.0f, 0);
+                    ImGui::TableSetupColumn("PID",    ImGuiTableColumnFlags_WidthFixed, 65.0f, 1);
+                    ImGui::TableSetupColumn("CPU",    ImGuiTableColumnFlags_WidthFixed, 75.0f, 2);
+                    ImGui::TableSetupColumn("Memory", ImGuiTableColumnFlags_WidthFixed, 95.0f, 3);
+                    ImGui::TableHeadersRow();
 
-            for (const auto& proc : dummyProcs) {
-                ImGui::TableNextRow();
-                ImGui::TableSetColumnIndex(0);
-                ImGui::Text("%s", proc.name);
+                    // table column sorting
+                    if (ImGuiTableSortSpecs* sorts = ImGui::TableGetSortSpecs()) {
+                        if (sorts->SpecsDirty && sorts->SpecsCount > 0) {
+                            const ImGuiTableColumnSortSpecs* s = &sorts->Specs[0];
+                            std::sort(g_procs.begin(), g_procs.end(), [&](const Proc& a, const Proc& b) {
+                                bool asc = (s->SortDirection == ImGuiSortDirection_Ascending);
+                                if (s->ColumnUserID == 0) return asc ? (a.name < b.name) : (a.name > b.name);
+                                if (s->ColumnUserID == 1) return asc ? (a.pid < b.pid) : (a.pid > b.pid);
+                                if (s->ColumnUserID == 2) return asc ? (a.baseCpu < b.baseCpu) : (a.baseCpu > b.baseCpu);
+                                if (s->ColumnUserID == 3) return asc ? (a.memMB < b.memMB) : (a.memMB > b.memMB);
+                                return false;
+                            });
+                            sorts->SpecsDirty = false;
+                        }
+                    }
 
-                ImGui::TableSetColumnIndex(1);
-                ImGui::Text("%d", proc.pid);
+                    for (size_t i = 0; i < g_procs.size(); i++) {
+                        if (!g_procs[i].alive) continue;
 
-                ImGui::TableSetColumnIndex(2);
-                ImGui::Text("%s", proc.cpu);
+                        ImGui::TableNextRow();
+                        bool isSelected = (g_selectedProcIdx == (int)i);
 
-                ImGui::TableSetColumnIndex(3);
-                ImGui::Text("%s", proc.memory);
+                        // column 0: Name (Selectable spans the full row)
+                        ImGui::TableNextColumn();
+                        char label[128];
+                        snprintf(label, sizeof(label), "%s##proc_%d", g_procs[i].name.c_str(), g_procs[i].pid);
+                        if (ImGui::Selectable(label, isSelected, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowItemOverlap)) {
+                            g_selectedProcIdx = (int)i;
+                        }
+
+                        // column 1: PID
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%d", g_procs[i].pid);
+
+                        // column 2: CPU
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%.1f%%", currentCpu[i]);
+
+                        // column 3: Memory
+                        ImGui::TableNextColumn();
+                        ImGui::Text("%.1f MB", g_procs[i].memMB);
+                    }
+                    ImGui::EndTable();
+                }
+
+                // footer live status metrics
+                ImGui::AlignTextToFramePadding();
+                ImGui::Text("Processes: %d | CPU: %.1f%% | Memory: %.1f MB", activeCount, totalCpu, totalMem);
+
+                // action buttons at the bottom - reset all and end task
+                ImGui::SameLine(ImGui::GetContentRegionAvail().x - 170.0f);
+                if (ImGui::Button("Reset All", ImVec2(75, 0))) {
+                    for (auto& p : g_procs) p.alive = true;
+                    g_selectedProcIdx = -1;
+                }
+
+                ImGui::SameLine();
+                bool canEnd = (g_selectedProcIdx >= 0 && g_selectedProcIdx < (int)g_procs.size() && g_procs[g_selectedProcIdx].alive);
+                if (!canEnd) ImGui::BeginDisabled();
+                if (ImGui::Button("End Task", ImVec2(85, 0))) {
+                    if (canEnd) {
+                        g_procs[g_selectedProcIdx].alive = false;
+                        g_selectedProcIdx = -1;
+                    }
+                }
+                if (!canEnd) ImGui::EndDisabled();
+
+                ImGui::EndTabItem();
             }
 
-            ImGui::EndTable();
-        }
+            // tab 2: performance (graph and progress bar)
+            if (ImGui::BeginTabItem("Performance")) {
+                static float hist[90] = {};
+                static double lastT = 0.0;
+                double now = glfwGetTime();
 
-        ImGui::Spacing();
-        if (ImGui::Button("End Process", ImVec2(110, 0))) {
-            // Placeholder action
+                // update scrolling CPU history buffer every 0.25 seconds
+                if (now - lastT > 0.25) {
+                    lastT = now;
+                    std::memmove(hist, hist + 1, sizeof(float) * 89);
+                    hist[89] = 22.0f + 14.0f * std::sin((float)now * 0.8f) + (std::rand() % 120) / 10.0f;
+                }
+
+                ImGui::Text("CPU Utilization");
+                ImGui::PlotLines("##cpu_graph", hist, 90, 0, nullptr, 0.0f, 100.0f, ImVec2(-1, 140));
+
+                ImGui::Spacing();
+                ImGui::Separator();
+                ImGui::Spacing();
+
+                ImGui::Text("Physical Memory (RAM)");
+                // display memory relative to a 512 MB base
+                float memFraction = 184.2f / 512.0f;
+                ImGui::ProgressBar(memFraction, ImVec2(-1, 24.0f), "184.2 MB / 512.0 MB (36%)");
+
+                ImGui::EndTabItem();
+            }
+
+            ImGui::EndTabBar();
         }
     }
     ImGui::End();
