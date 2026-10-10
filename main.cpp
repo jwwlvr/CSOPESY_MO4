@@ -21,6 +21,8 @@ struct Shell {
     bool allowedQuit = false; // only affected by PWR
     bool closeWarning = false;
 
+    bool showTaskManager = false;
+
     // add other state vars dito for other features
 };
 
@@ -80,6 +82,9 @@ static void DrawTaskbar() {
     ImGui::BringWindowToDisplayFront(ImGui::GetCurrentWindow());
 
     // add other taskbar features here (start menu, app icons, etc.)
+    if (ImGui::Button("Task Mgr", ImVec2(80, 36))) {
+        shell.showTaskManager = !shell.showTaskManager;
+    }
 
     // PWR button (right side)
     ImGui::SameLine(vp->Size.x - 68);
@@ -118,8 +123,80 @@ static void DrawCloseWarning() {
     ImGui::End();
 }
 
+
+static void DrawTaskManager() {
+    if (!shell.showTaskManager) return;
+
+    // 1. Increased default window size (e.g., 620 wide x 520 tall)
+    ImGui::SetNextWindowSize(ImVec2(620, 520), ImGuiCond_FirstUseEver);
+
+    if (ImGui::Begin("Task Manager", &shell.showTaskManager)) {
+        
+        ImGui::Text("Processes: 8 | CPU: 24.5% | Memory: 388 MB / 512 MB");
+        ImGui::Separator();
+        ImGui::Spacing();
+
+        ImGuiTableFlags flags = ImGuiTableFlags_Borders 
+                              | ImGuiTableFlags_RowBg 
+                              | ImGuiTableFlags_ScrollY 
+                              | ImGuiTableFlags_Resizable;
+
+        // 2. ImVec2(0, -38.0f) lets the table expand to fill vertical space,
+        // leaving 38px at the bottom for the "End Process" button
+        if (ImGui::BeginTable("ProcessesTable", 4, flags, ImVec2(0, -38.0f))) {
+            ImGui::TableSetupColumn("Name", ImGuiTableColumnFlags_WidthStretch);
+            ImGui::TableSetupColumn("PID", ImGuiTableColumnFlags_WidthFixed, 60.0f);
+            ImGui::TableSetupColumn("CPU", ImGuiTableColumnFlags_WidthFixed, 80.0f);
+            ImGui::TableSetupColumn("Memory", ImGuiTableColumnFlags_WidthFixed, 90.0f);
+            ImGui::TableHeadersRow();
+
+            struct ProcessEntry {
+                const char* name;
+                int pid;
+                const char* cpu;
+                const char* memory;
+            };
+
+            static const ProcessEntry dummyProcs[] = {
+                { "System",                4,   "0.8%",  "12.4 MB" },
+                { "csopesy_kernel.exe",  120,   "4.2%",  "64.0 MB" },
+                { "compositor_glfw.exe", 234,   "9.5%",  "88.2 MB" },
+                { "task_manager.exe",    512,   "1.1%",  "22.1 MB" },
+                { "desktop_clock.dll",   680,   "0.2%",   "4.8 MB" },
+                { "csopesy_shell.exe",   744,   "3.8%",  "31.6 MB" },
+                { "audio_driver.sys",    812,   "0.1%",   "2.2 MB" },
+                { "idle_worker.exe",     990,   "2.4%",  "16.5 MB" }
+            };
+
+            for (const auto& proc : dummyProcs) {
+                ImGui::TableNextRow();
+                ImGui::TableSetColumnIndex(0);
+                ImGui::Text("%s", proc.name);
+
+                ImGui::TableSetColumnIndex(1);
+                ImGui::Text("%d", proc.pid);
+
+                ImGui::TableSetColumnIndex(2);
+                ImGui::Text("%s", proc.cpu);
+
+                ImGui::TableSetColumnIndex(3);
+                ImGui::Text("%s", proc.memory);
+            }
+
+            ImGui::EndTable();
+        }
+
+        ImGui::Spacing();
+        if (ImGui::Button("End Process", ImVec2(110, 0))) {
+            // Placeholder action
+        }
+    }
+    ImGui::End();
+}
+
 static void DrawApps() {
     // add other festures?
+    DrawTaskManager();
 }
 
 // Shutdown transition
