@@ -25,6 +25,7 @@ static void DrawDesktop();
 static void DrawTaskbar();
 static void DrawCloseWarning();
 static void DrawTaskManager();
+static void DrawNotepad();
 static void DrawApps();
 static void DrawShutdown(GLFWwindow* window);
 
@@ -39,9 +40,13 @@ struct Shell {
     bool allowedQuit = false; // only affected by PWR
     bool closeWarning = false;
 
-    bool showTaskManager = false;
-
     // add other state vars dito for other features
+
+    bool showTaskManager = false;
+    bool showNotepad = false;
+    
+    // notepad text buffer
+    char noteBuffer[8192] = "Welcome to CSOPESY Notepad!\n\nType your notes or system logs here...";
 };
 
 struct Proc {
@@ -122,8 +127,16 @@ static void DrawTaskbar() {
     ImGui::BringWindowToDisplayFront(ImGui::GetCurrentWindow());
 
     // add other taskbar features here (start menu, app icons, etc.)
+    
+    //task manager button
     if (IconButton("##tm_icon", 0, shell.showTaskManager, "Task Manager")) {
         shell.showTaskManager = !shell.showTaskManager;
+    }
+
+    //notepad button
+    ImGui::SameLine();
+    if (IconButton("##np_icon", 1, shell.showNotepad, "Notepad")) {
+        shell.showNotepad = !shell.showNotepad;
     }
 
     // PWR button (right side)
@@ -180,6 +193,15 @@ static bool IconButton(const char* id, int kind, bool active, const char* toolti
         dl->AddLine(p3, p4, fg, 2.0f);
         dl->AddLine(p4, p5, fg, 2.0f);
         dl->AddLine(p5, p6, fg, 2.0f);
+    }
+
+    else if (kind == 1) {
+        // paper sheet rectangle
+        dl->AddRect(ImVec2(c.x - 9, c.y - 11), ImVec2(c.x + 9, c.y + 11), fg, 2.0f, 0, 1.8f);
+        // 3 horizontal text lines
+        for (int i = 0; i < 3; i++) {
+            dl->AddLine(ImVec2(c.x - 5, c.y - 5 + i * 5), ImVec2(c.x + 5, c.y - 5 + i * 5), fg, 1.8f);
+        }
     }
 
     // active bottom-indicator strip
@@ -383,9 +405,58 @@ static void DrawTaskManager() {
     ImGui::End();
 }
 
+static void DrawNotepad() {
+    if (!shell.showNotepad) return;
+
+    ImGui::SetNextWindowPos(ImVec2(240, 100), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowSize(ImVec2(480, 360), ImGuiCond_FirstUseEver);
+
+    ImGuiWindowFlags flags = ImGuiWindowFlags_MenuBar;
+
+    if (ImGui::Begin("Notepad - [Untitled.txt]", &shell.showNotepad, flags)) {
+        
+        // menu
+        if (ImGui::BeginMenuBar()) {
+            if (ImGui::BeginMenu("File")) {
+                if (ImGui::MenuItem("New", "Ctrl+N")) {
+                    shell.noteBuffer[0] = '\0';
+                }
+                if (ImGui::MenuItem("Insert OS Timestamp")) {
+                    std::string stamp = "\n[" + ClockString() + "]\n";
+                    strncat(shell.noteBuffer, stamp.c_str(), sizeof(shell.noteBuffer) - strlen(shell.noteBuffer) - 1);
+                }
+                ImGui::Separator();
+                if (ImGui::MenuItem("Close", "Alt+F4")) {
+                    shell.showNotepad = false;
+                }
+                ImGui::EndMenu();
+            }
+
+            if (ImGui::BeginMenu("Edit")) {
+                if (ImGui::MenuItem("Clear All")) {
+                    shell.noteBuffer[0] = '\0';
+                }
+                ImGui::EndMenu();
+            }
+            ImGui::EndMenuBar();
+        }
+
+        // editable text area (fills window except for the footer bar)
+        ImVec2 textRegionSize(-1, -ImGui::GetFrameHeightWithSpacing());
+        ImGui::InputTextMultiline("##editor", shell.noteBuffer, sizeof(shell.noteBuffer),
+                                  textRegionSize, ImGuiInputTextFlags_AllowTabInput);
+
+        // status footer bar
+        int charCount = (int)std::strlen(shell.noteBuffer);
+        ImGui::TextDisabled("Characters: %d | Encoding: UTF-8 | CSOPESY Text System", charCount);
+    }
+    ImGui::End();
+}
+
 static void DrawApps() {
     // add other festures?
     DrawTaskManager();
+    DrawNotepad();
 }
 
 // Shutdown transition
