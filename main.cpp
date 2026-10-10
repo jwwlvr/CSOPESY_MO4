@@ -16,6 +16,22 @@
 #include <vector>
 #include <cstring>
 
+//function declaration
+static void OnWindowClose(GLFWwindow* w);
+static std::string ClockString();
+
+// ui elements
+static void DrawDesktop();
+static void DrawTaskbar();
+static void DrawCloseWarning();
+static void DrawTaskManager();
+static void DrawApps();
+static void DrawShutdown(GLFWwindow* window);
+
+// buttons
+static bool IconButton(const char* id, int kind, bool active, const char* tooltip);
+static bool PowerButton(const char* id, const char* tooltip);
+
 // global state
 struct Shell {
     bool shuttingDown = false;
@@ -106,15 +122,15 @@ static void DrawTaskbar() {
     ImGui::BringWindowToDisplayFront(ImGui::GetCurrentWindow());
 
     // add other taskbar features here (start menu, app icons, etc.)
-    if (ImGui::Button("Task Mgr", ImVec2(80, 36))) {
+    if (IconButton("##tm_icon", 0, shell.showTaskManager, "Task Manager")) {
         shell.showTaskManager = !shell.showTaskManager;
     }
 
     // PWR button (right side)
-    ImGui::SameLine(vp->Size.x - 68);
-    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.3f, 0.3f, 1));
-    if (ImGui::Button("PWR", ImVec2(56, 36))) ImGui::OpenPopup("Shut down CSOPESY emulator?");
-    ImGui::PopStyleColor();
+    ImGui::SameLine(vp->Size.x - 56);
+    if (PowerButton("##pwr_btn", "Shut Down CSOPESY OS")) {
+        ImGui::OpenPopup("Shut down CSOPESY emulator?");
+    }
 
     ImGui::SetNextWindowPos(vp->Pos + vp->Size * 0.5f, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
     if (ImGui::BeginPopupModal("Shut down CSOPESY emulator?", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
@@ -130,6 +146,79 @@ static void DrawTaskbar() {
         ImGui::EndPopup();
     }
     ImGui::End();
+}
+
+
+// app icon button 
+static bool IconButton(const char* id, int kind, bool active, const char* tooltip) {
+    const ImVec2 size(44, 36);
+    ImVec2 pos = ImGui::GetCursorScreenPos();
+    bool clicked = ImGui::InvisibleButton(id, size);
+    bool hovered = ImGui::IsItemHovered();
+    ImDrawList* dl = ImGui::GetWindowDrawList();
+
+    // Background highlight
+    ImU32 bg = active  ? IM_COL32(70, 110, 200, 255)
+             : hovered ? IM_COL32(60, 60, 85, 255)
+                       : IM_COL32(35, 35, 50, 255);
+    ImU32 fg = IM_COL32(240, 240, 240, 255);
+    dl->AddRectFilled(pos, pos + size, bg, 6.0f);
+
+    ImVec2 c = pos + size * 0.5f;
+
+    // task manager button
+    if (kind == 0) {
+        ImVec2 p1(c.x - 13, c.y);
+        ImVec2 p2(c.x - 6,  c.y);
+        ImVec2 p3(c.x - 2,  c.y - 9);  // peak
+        ImVec2 p4(c.x + 3,  c.y + 8);  // dip
+        ImVec2 p5(c.x + 7,  c.y);
+        ImVec2 p6(c.x + 13, c.y);
+
+        dl->AddLine(p1, p2, fg, 2.0f);
+        dl->AddLine(p2, p3, fg, 2.0f);
+        dl->AddLine(p3, p4, fg, 2.0f);
+        dl->AddLine(p4, p5, fg, 2.0f);
+        dl->AddLine(p5, p6, fg, 2.0f);
+    }
+
+    // active bottom-indicator strip
+    if (active) {
+        dl->AddRectFilled(ImVec2(pos.x + 12, pos.y + size.y - 3), ImVec2(pos.x + size.x - 12, pos.y + size.y - 1), fg, 1.0f);
+    }
+    if (hovered && tooltip) {
+        ImGui::SetTooltip("%s", tooltip);
+    }
+    return clicked;
+}
+
+// power button
+static bool PowerButton(const char* id, const char* tooltip) {
+    const ImVec2 size(44, 36);
+    ImVec2 pos = ImGui::GetCursorScreenPos();
+    bool clicked = ImGui::InvisibleButton(id, size);
+    bool hovered = ImGui::IsItemHovered();
+    ImDrawList* dl = ImGui::GetWindowDrawList();
+
+    // Red glow states
+    ImU32 bg = hovered ? IM_COL32(140, 30, 30, 255) : IM_COL32(40, 20, 25, 255);
+    ImU32 fg = hovered ? IM_COL32(255, 120, 120, 255) : IM_COL32(235, 70, 70, 255);
+    dl->AddRectFilled(pos, pos + size, bg, 6.0f);
+
+    ImVec2 c = pos + size * 0.5f;
+    const float radius = 8.5f;
+
+    // Draw broken circle
+    dl->PathArcTo(c, radius, -IM_PI * 0.30f, IM_PI * 1.30f, 24);
+    dl->PathStroke(fg, 0, 2.2f);
+
+    // Draw top vertical notch
+    dl->AddLine(ImVec2(c.x, c.y - 10.0f), ImVec2(c.x, c.y - 1.0f), fg, 2.2f);
+
+    if (hovered && tooltip) {
+        ImGui::SetTooltip("%s", tooltip);
+    }
+    return clicked;
 }
 
 // Closing Window with X Warning

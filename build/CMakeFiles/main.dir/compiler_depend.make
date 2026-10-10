@@ -79,6 +79,7 @@ CMakeFiles/main.dir/main.cpp.obj: C:/Users/Anne\ Patricio/Desktop/Files/DLSU/Yea
   C:/msys64/mingw64/include/c++/14.2.0/cstddef \
   C:/msys64/mingw64/include/c++/14.2.0/cstdio \
   C:/msys64/mingw64/include/c++/14.2.0/cstdlib \
+  C:/msys64/mingw64/include/c++/14.2.0/cstring \
   C:/msys64/mingw64/include/c++/14.2.0/ctime \
   C:/msys64/mingw64/include/c++/14.2.0/cwchar \
   C:/msys64/mingw64/include/c++/14.2.0/debug/assertions.h \
@@ -458,6 +459,8 @@ C:/msys64/mingw64/include/c++/14.2.0/cstddef:
 C:/msys64/mingw64/include/c++/14.2.0/cstdio:
 
 C:/msys64/mingw64/include/c++/14.2.0/cstdlib:
+
+C:/msys64/mingw64/include/c++/14.2.0/cstring:
 
 C:/msys64/mingw64/include/c++/14.2.0/ctime:
 
