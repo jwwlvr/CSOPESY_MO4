@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/dee5efce83df565cbd91405fc6c9e4e0/glfw-populate.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/d911496e54b8332d3090fde40919edd8/glfw-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/lex/LEXIE/Y3T1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/59f1f2ff4fd791f20aeb7665da35dbf6/glfw-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"glfw-populate"
+		],
+		"name" : "glfw-populate"
+	}
+}
