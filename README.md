@@ -47,13 +47,13 @@ The required dependency paths must be correctly configured in `CMakeLists.txt`.
 
 ## Running the Program via VS Code (Recommended)
 
-1. **Install Prerequisites**: Ensure the **CMake Tools** extension is installed in VS Code[cite: 1, 8].
-2. **Open Project**: Open the `CSOPESY_MO4` project folder in VS Code[cite: 1, 8].
+1. **Install Prerequisites**: Ensure the **CMake Tools** extension is installed in VS Code.
+2. **Open Project**: Open the `CSOPESY_MO4` project folder in VS Code.
 3. **Configure & Build**:
-   - Press `Ctrl + Shift + P` to open the Command Palette[cite: 1, 8].
-   - Run `CMake: Reconfigure` or select your configured MinGW kit[cite: 1, 8].
-   - Run `CMake: Build`[cite: 1, 8].
-4. **Launch**: Click the **Launch / Play button** located on the bottom status bar (blue bar) to run the application[cite: 1, 8].
+   - Press `Ctrl + Shift + P` to open the Command Palette.
+   - Run `CMake: Reconfigure` or select your configured MinGW kit.
+   - Run `CMake: Build`.
+4. **Launch**: Click the **Launch / Play button** located on the bottom status bar (blue bar) to run the application.
 
 ---
 
