@@ -1,0 +1,9 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/cmake_install.cmake",
+		"C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-build/cmake_install.cmake",
+		"C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-build/src/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
