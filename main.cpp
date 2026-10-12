@@ -166,7 +166,7 @@ static void DrawSplash() {
 
     const char* info[] = {
         "CSOPESY Operating System Emulator v1.0",
-        "Created By: Austria, De Leon, Guererro, and Patricio",
+        "Created By: Austria, De Leon, Guerrero, and Patricio",
         "",
         "Major Output 4 (MO4)"
     };
