@@ -128,10 +128,29 @@ static void DrawTaskbar() {
 
     // add other taskbar features here (start menu, app icons, etc.)
     // blue button = app is running
+
+
     // bool notesOn = shell.showNotes;
     // if (notesOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
     // if (ImGui::Button("NOTES", ImVec2(84, 36))) shell.showNotes = !shell.showNotes;
     // if (notesOn) ImGui::PopStyleColor();
+
+    // ImGui::SameLine();
+    // bool calcOn = shell.showCalc;
+    // if (calcOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
+    // if (ImGui::Button("CALC", ImVec2(84, 36))) shell.showCalc = !shell.showCalc;
+    // if (calcOn) ImGui::PopStyleColor();
+
+    // ImGui::SameLine();
+    // bool tasksOn = shell.showTaskMgr;
+    // if (tasksOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
+    // if (ImGui::Button("TASKS", ImVec2(84, 36))) shell.showTaskMgr = !shell.showTaskMgr;
+    // if (tasksOn) ImGui::PopStyleColor();
+
+    // ImGui::SameLine(vp->Size.x - 68);
+    // ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.3f, 0.3f, 1));
+    // if (ImGui::Button("PWR", ImVec2(56, 36))) ImGui::OpenPopup("Shut down CSOPESY emulator?");
+    // ImGui::PopStyleColor();
 
     //task manager button
     if (IconButton("##tm_icon", 0, shell.showTaskMgr, "Task Manager")) {
@@ -143,28 +162,17 @@ static void DrawTaskbar() {
     if (IconButton("##np_icon", 1, shell.showNotes, "Notepad")) {
         shell.showNotes = !shell.showNotes;
     }
-
+    // calculator button
     ImGui::SameLine();
-    bool calcOn = shell.showCalc;
-    if (calcOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
-    if (ImGui::Button("CALC", ImVec2(84, 36))) shell.showCalc = !shell.showCalc;
-    if (calcOn) ImGui::PopStyleColor();
-
-    // ImGui::SameLine();
-    // bool tasksOn = shell.showTaskMgr;
-    // if (tasksOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
-    // if (ImGui::Button("TASKS", ImVec2(84, 36))) shell.showTaskMgr = !shell.showTaskMgr;
-    // if (tasksOn) ImGui::PopStyleColor();
+    if (IconButton("##calc_icon", 2, shell.showCalc, "Calculator")) {
+        shell.showCalc = !shell.showCalc;
+    }
 
     // PWR button (right side)
     ImGui::SameLine(vp->Size.x - 56);
     if (PowerButton("##pwr_btn", "Shut Down CSOPESY OS")) {
         ImGui::OpenPopup("Shut down CSOPESY emulator?");
     }
-    // ImGui::SameLine(vp->Size.x - 68);
-    // ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.3f, 0.3f, 1));
-    // if (ImGui::Button("PWR", ImVec2(56, 36))) ImGui::OpenPopup("Shut down CSOPESY emulator?");
-    // ImGui::PopStyleColor();
 
     ImGui::SetNextWindowPos(vp->Pos + vp->Size * 0.5f, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
     if (ImGui::BeginPopupModal("Shut down CSOPESY emulator?", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
@@ -222,6 +230,20 @@ static bool IconButton(const char* id, int kind, bool active, const char* toolti
         for (int i = 0; i < 3; i++) {
             dl->AddLine(ImVec2(c.x - 5, c.y - 5 + i * 5), ImVec2(c.x + 5, c.y - 5 + i * 5), fg, 1.8f);
         }
+    }
+
+    else if (kind == 2) {
+        // Outer calculator body
+        dl->AddRect(ImVec2(c.x - 10, c.y - 12), ImVec2(c.x + 10, c.y + 12), fg, 2.5f, 0, 1.6f);
+
+        // Top digital readout screen
+        dl->AddRectFilled(ImVec2(c.x - 7, c.y - 9), ImVec2(c.x + 7, c.y - 4), fg);
+
+        // 2x2 Grid of keypad buttons
+        dl->AddRectFilled(ImVec2(c.x - 7, c.y - 1), ImVec2(c.x - 2, c.y + 3), fg, 1.0f); // Top-left
+        dl->AddRectFilled(ImVec2(c.x + 2, c.y - 1), ImVec2(c.x + 7, c.y + 3), fg, 1.0f); // Top-right
+        dl->AddRectFilled(ImVec2(c.x - 7, c.y + 5), ImVec2(c.x - 2, c.y + 9), fg, 1.0f); // Bottom-left
+        dl->AddRectFilled(ImVec2(c.x + 2, c.y + 5), ImVec2(c.x + 7, c.y + 9), fg, 1.0f); // Bottom-right
     }
 
     // active bottom-indicator strip

@@ -2166,8 +2166,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-t91r0b"
-      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-t91r0b"
+      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-eim91r"
+      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-eim91r"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
@@ -2177,11 +2177,11 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-t91r0b'
+        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-eim91r'
         
-        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_b7c24
-        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo -D_MBCS  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_b7c24.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_b7c24.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_b7c24.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_b7c24.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_b7c24.exe /implib:cmTC_b7c24.lib /pdb:cmTC_b7c24.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_52f60
+        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo -D_MBCS  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_52f60.dir\\CMakeCCompilerABI.c.obj /FdCMakeFiles\\cmTC_52f60.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCCompilerABI.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_52f60.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_52f60.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_52f60.exe /implib:cmTC_52f60.lib /pdb:cmTC_52f60.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -2194,7 +2194,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_b7c24.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_b7c24.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_b7c24.exe /implib:cmTC_b7c24.lib /pdb:cmTC_b7c24.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe]
+        link line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_52f60.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_52f60.dir\\CMakeCCompilerABI.c.obj  /out:cmTC_52f60.exe /implib:cmTC_52f60.lib /pdb:cmTC_52f60.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe]
         linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe 
         implicit libs: []
         implicit objs: []
@@ -2222,8 +2222,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-66wfyc"
-      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-66wfyc"
+      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-ac1amr"
+      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-ac1amr"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -2234,11 +2234,11 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-66wfyc'
+        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-ac1amr'
         
-        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_44c47
-        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo /TP -D_MBCS  /DWIN32 /D_WINDOWS /GR /EHsc  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_44c47.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_44c47.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
-        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_44c47.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_44c47.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_44c47.exe /implib:cmTC_44c47.lib /pdb:cmTC_44c47.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_11342
+        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo /TP -D_MBCS  /DWIN32 /D_WINDOWS /GR /EHsc  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_11342.dir\\CMakeCXXCompilerABI.cpp.obj /FdCMakeFiles\\cmTC_11342.dir\\ /FS -c "C:\\Program Files\\CMake\\share\\cmake-4.4\\Modules\\CMakeCXXCompilerABI.cpp"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_11342.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_11342.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_11342.exe /implib:cmTC_11342.lib /pdb:cmTC_11342.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
         
       exitCode: 0
   -
@@ -2251,7 +2251,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_44c47.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_44c47.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_44c47.exe /implib:cmTC_44c47.lib /pdb:cmTC_44c47.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe]
+        link line: [[2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_11342.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_11342.dir\\CMakeCXXCompilerABI.cpp.obj  /out:cmTC_11342.exe /implib:cmTC_11342.lib /pdb:cmTC_11342.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe]
         linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/link.exe 
         implicit libs: []
         implicit objs: []
@@ -2637,4 +2637,127 @@ events:
         - "C:\\Program Files\\PuTTY\\"
         - "C:\\Users\\Anne Patricio\\AppData\\Local\\bin\\NASM"
         - "C:\\Program Files\\dotnet\\"
-  
+        - "C:\\Program Files\\CMake\\bin"
+        - "C:\\Users\\Anne Patricio\\.cargo\\bin"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\Programs\\Python\\Python313\\"
+        - "C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin\\"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\Programs\\Python\\Launcher\\"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\Microsoft\\WindowsApps"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\Programs\\Microsoft VS Code\\bin"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\GitHubDesktop\\bin"
+        - "C:\\Users\\Anne Patricio\\AppData\\Roaming\\npm"
+        - "C:\\Users\\Anne Patricio\\AppData\\Local\\Programs\\MiKTeX\\miktex\\bin\\x64\\"
+        - "C:\\Users\\Anne Patricio\\.dotnet\\tools"
+        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin"
+        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja"
+        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe"
+        - "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\vcpkg"
+      CMAKE_INSTALL_PREFIX: "C:/Program Files (x86)/CSOPESY_Core"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "C:/Program Files"
+        - "C:/Program Files (x86)"
+        - "C:/Program Files/CMake"
+        - "C:/Program Files (x86)/CSOPESY_Core"
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/Internal/CheckSourceCompiles.cmake:81 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/CheckCSourceCompiles.cmake:103 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/FindThreads.cmake:160 (check_c_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/FindThreads.cmake:226 (_threads_check_libc)"
+      - "build/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-rxeoqd"
+      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-rxeoqd"
+    cmakeVariables:
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-rxeoqd'
+        
+        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_e4e6d
+        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_e4e6d.dir\\src.c.obj /FdCMakeFiles\\cmTC_e4e6d.dir\\ /FS -c "C:\\Users\\Anne Patricio\\Desktop\\Files\\DLSU\\Year 3\\Term 1\\CSOPESY\\CSOPESY_MO4\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rxeoqd\\src.c"
+        FAILED: CMakeFiles/cmTC_e4e6d.dir/src.c.obj 
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCMAKE_HAVE_LIBC_PTHREAD -D_MBCS  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_e4e6d.dir\\src.c.obj /FdCMakeFiles\\cmTC_e4e6d.dir\\ /FS -c "C:\\Users\\Anne Patricio\\Desktop\\Files\\DLSU\\Year 3\\Term 1\\CSOPESY\\CSOPESY_MO4\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rxeoqd\\src.c"
+        C:\\Users\\Anne Patricio\\Desktop\\Files\\DLSU\\Year 3\\Term 1\\CSOPESY\\CSOPESY_MO4\\build\\CMakeFiles\\CMakeScratch\\TryCompile-rxeoqd\\src.c(1): fatal error C1083: Cannot open include file: 'pthread.h': No such file or directory
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/CheckLibraryExists.cmake:142 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/FindThreads.cmake:238 (_threads_check_lib)"
+      - "build/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-49rc7b"
+      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-49rc7b"
+    cmakeVariables:
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-49rc7b'
+        
+        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_21ca4
+        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCHECK_FUNCTION_EXISTS=pthread_create -D_MBCS  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_21ca4.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_21ca4.dir\\ /FS -c "C:\\Users\\Anne Patricio\\Desktop\\Files\\DLSU\\Year 3\\Term 1\\CSOPESY\\CSOPESY_MO4\\build\\CMakeFiles\\CMakeScratch\\TryCompile-49rc7b\\CheckFunctionExists.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_21ca4.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_21ca4.dir\\CheckFunctionExists.c.obj  /out:cmTC_21ca4.exe /implib:cmTC_21ca4.lib /pdb:cmTC_21ca4.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_21ca4.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_21ca4.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_21ca4.dir\\CheckFunctionExists.c.obj  /out:cmTC_21ca4.exe /implib:cmTC_21ca4.lib /pdb:cmTC_21ca4.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthreads.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_21ca4.dir\\CheckFunctionExists.c.obj /out:cmTC_21ca4.exe /implib:cmTC_21ca4.lib /pdb:cmTC_21ca4.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_21ca4.dir/intermediate.manifest CMakeFiles\\cmTC_21ca4.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib'\x0d\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/CheckLibraryExists.cmake:142 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/FindThreads.cmake:175 (check_library_exists)"
+      - "C:/Program Files/CMake/share/cmake-4.4/Modules/FindThreads.cmake:239 (_threads_check_lib)"
+      - "build/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-negy6y"
+      binary: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-negy6y"
+    cmakeVariables:
+      CMAKE_CXX_STDLIB_MODULES_JSON: ""
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/CMakeFiles/CMakeScratch/TryCompile-negy6y'
+        
+        Run Build Command(s): C:/PROGRA~2/MICROS~2/18/BUILDT~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe -v cmTC_e7c6e
+        [1/2] "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\cl.exe"  /nologo -DCHECK_FUNCTION_EXISTS=pthread_create -D_MBCS  /DWIN32 /D_WINDOWS  /Zi /Ob0 /Od /RTC1 -MDd /showIncludes /FoCMakeFiles\\cmTC_e7c6e.dir\\CheckFunctionExists.c.obj /FdCMakeFiles\\cmTC_e7c6e.dir\\ /FS -c "C:\\Users\\Anne Patricio\\Desktop\\Files\\DLSU\\Year 3\\Term 1\\CSOPESY\\CSOPESY_MO4\\build\\CMakeFiles\\CMakeScratch\\TryCompile-negy6y\\CheckFunctionExists.c"
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_e7c6e.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_e7c6e.dir\\CheckFunctionExists.c.obj  /out:cmTC_e7c6e.exe /implib:cmTC_e7c6e.lib /pdb:cmTC_e7c6e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        FAILED: cmTC_e7c6e.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && "C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\\cmTC_e7c6e.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\mt.exe" --manifests  -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe" /nologo CMakeFiles\\cmTC_e7c6e.dir\\CheckFunctionExists.c.obj  /out:cmTC_e7c6e.exe /implib:cmTC_e7c6e.lib /pdb:cmTC_e7c6e.pdb /version:0.0 /machine:x64  /debug /INCREMENTAL /subsystem:console  pthread.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+        LINK Pass 1: command "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.50.35717\\bin\\Hostx64\\x64\\link.exe /nologo CMakeFiles\\cmTC_e7c6e.dir\\CheckFunctionExists.c.obj /out:cmTC_e7c6e.exe /implib:cmTC_e7c6e.lib /pdb:cmTC_e7c6e.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_e7c6e.dir/intermediate.manifest CMakeFiles\\cmTC_e7c6e.dir/manifest.res" failed (exit code 1104) with the following output:\x0d
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib'\x0d\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...

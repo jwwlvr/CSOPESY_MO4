@@ -1,3 +1,37 @@
 # ninja log v6
-10	179	8134910648445271	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	ae84e32ad76c232f
-10	179	8134910648445271	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	ae84e32ad76c232f
+8	127	8134999651619693	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	ae84e32ad76c232f
+5438	5750	8134999704857996	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	38299fb3a71825e7
+5750	5890	8134999709199258	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	7fafbd79a75f3038
+8	127	8134999651619693	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	ae84e32ad76c232f
+6278	6423	8134999714583113	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	13a8c1f2d649c2d
+128	5436	8134999704683628	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	1be9ab0a0aa6adec
+5750	5890	8134999709199258	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	7fafbd79a75f3038
+128	5436	8134999704683628	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	1be9ab0a0aa6adec
+6424	6548	8134999715823820	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	d51d08c16b288007
+5438	5750	8134999704857996	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	38299fb3a71825e7
+6090	6278	8134999712634278	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	d03482e2c2b5cd11
+5891	6089	8134999711235372	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	fa54eb77868834ef
+6549	6732	8134999717655741	CMakeFiles/glfw-populate-complete	7fca48acde04c5e6
+5891	6089	8134999711235372	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	fa54eb77868834ef
+6090	6278	8134999712634278	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	d03482e2c2b5cd11
+6278	6423	8134999714583113	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	13a8c1f2d649c2d
+6424	6548	8134999715823820	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	d51d08c16b288007
+6549	6732	8134999717655741	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	7fca48acde04c5e6
+6549	6732	8134999717655741	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	7fca48acde04c5e6
+6549	6732	8134999717655741	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	7fca48acde04c5e6
+58	491	8135005203806021	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	38299fb3a71825e7
+58	491	8135005203806021	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	38299fb3a71825e7
+492	626	8135005209359635	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	7fafbd79a75f3038
+492	626	8135005209359635	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	7fafbd79a75f3038
+627	742	8135005210514115	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	fa54eb77868834ef
+627	742	8135005210514115	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	fa54eb77868834ef
+743	855	8135005211644398	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	d03482e2c2b5cd11
+743	855	8135005211644398	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	d03482e2c2b5cd11
+856	996	8135005213054214	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	13a8c1f2d649c2d
+856	996	8135005213054214	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	13a8c1f2d649c2d
+997	1111	8135005214207564	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	d51d08c16b288007
+997	1111	8135005214207564	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	d51d08c16b288007
+1112	1433	8135005217424805	CMakeFiles/glfw-populate-complete	7fca48acde04c5e6
+1112	1433	8135005217424805	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	7fca48acde04c5e6
+1112	1433	8135005217424805	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	7fca48acde04c5e6
+1112	1433	8135005217424805	C:/Users/Anne Patricio/Desktop/Files/DLSU/Year 3/Term 1/CSOPESY/CSOPESY_MO4/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	7fca48acde04c5e6
