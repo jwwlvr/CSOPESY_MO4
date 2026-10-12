@@ -31,6 +31,7 @@ struct Shell {
 
 static Shell shell;
 static const float taskbarHeight = 52.0f; //
+static const float appScale = 1.4f;  // size of the app windows
 
 // added to display warning if hindi PWR ginamit
 static void OnWindowClose(GLFWwindow* w) {
@@ -144,8 +145,9 @@ static void DrawCloseWarning() {
 static void DrawNotes() {
     if (!shell.showNotes) return;
     static char text[1024] = "Type your notes here...";
-    ImGui::SetNextWindowSize(ImVec2(400, 280), ImGuiCond_FirstUseEver);
+    ImGui::SetNextWindowSize(ImVec2(400 * appScale, 280 * appScale), ImGuiCond_FirstUseEver);
     ImGui::Begin("Notes", &shell.showNotes);
+    ImGui::SetWindowFontScale(appScale);
     ImGui::InputTextMultiline("##notes", text, sizeof text, ImVec2(-1, -1));
     ImGui::End();
 }
@@ -177,14 +179,14 @@ static void DrawCalculator() {
                            "0", ".", "C", "+" };
 
     ImGui::Begin("Calculator", &shell.showCalc, ImGuiWindowFlags_AlwaysAutoResize);
-    ImGui::SetWindowFontScale(2.0f);
+    ImGui::SetWindowFontScale(2.0f * appScale);
     ImGui::Text("%s", display.c_str());
-    ImGui::SetWindowFontScale(1.0f);
+    ImGui::SetWindowFontScale(appScale);
     ImGui::Separator();
 
     for (int i = 0; i < 16; i++) {
         if (i % 4 != 0) ImGui::SameLine();
-        if (ImGui::Button(keys[i], ImVec2(56, 45))) {
+        if (ImGui::Button(keys[i], ImVec2(56 * appScale, 45 * appScale))) {
             char k = keys[i][0];
             if ((k >= '0' && k <= '9') || k == '.') {
                 if (newNum) {
@@ -203,7 +205,7 @@ static void DrawCalculator() {
             }
         }
     }
-    if (ImGui::Button("=", ImVec2(248, 45))) {
+    if (ImGui::Button("=", ImVec2(224 * appScale + 24, 45 * appScale))) {
         if (op != 0) {
             display = Calc(acc, atof(display.c_str()), op);
             op = 0; acc = 0; newNum = true;
@@ -237,13 +239,15 @@ static void DrawTaskManager() {
         { "taskmgr.exe", 6004, 1.4f, 24.9f }
     };
 
+    int n = sizeof(procs) / sizeof(procs[0]);
     ImGui::Begin("Task Manager", &shell.showTaskMgr, ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::SetWindowFontScale(appScale);
     ImGui::Text("Processes (click a column to sort)");
     if (ImGui::BeginTable("procs", 4, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_Sortable)) {
-        ImGui::TableSetupColumn("Name", ImGuiTableColumnFlags_WidthFixed, 200);
-        ImGui::TableSetupColumn("PID", ImGuiTableColumnFlags_WidthFixed, 60);
-        ImGui::TableSetupColumn("CPU", ImGuiTableColumnFlags_WidthFixed, 70);
-        ImGui::TableSetupColumn("Memory", ImGuiTableColumnFlags_WidthFixed, 90);
+        ImGui::TableSetupColumn("Name", ImGuiTableColumnFlags_WidthFixed, 200 * appScale);
+        ImGui::TableSetupColumn("PID", ImGuiTableColumnFlags_WidthFixed, 60 * appScale);
+        ImGui::TableSetupColumn("CPU", ImGuiTableColumnFlags_WidthFixed, 70 * appScale);
+        ImGui::TableSetupColumn("Memory", ImGuiTableColumnFlags_WidthFixed, 90 * appScale);
         ImGui::TableHeadersRow();
 
         // sort when a header is clicked
@@ -251,7 +255,7 @@ static void DrawTaskManager() {
         if (specs && specs->SpecsDirty && specs->SpecsCount > 0) {
             int col = specs->Specs[0].ColumnIndex;
             bool asc = specs->Specs[0].SortDirection == ImGuiSortDirection_Ascending;
-            std::sort(procs, procs + 10, [col, asc](const Proc& a, const Proc& b) {
+            std::sort(procs, procs + n, [col, asc](const Proc& a, const Proc& b) {
                 bool less, greater;
                 if (col == 0) { less = std::string(a.name) < b.name; greater = std::string(b.name) < a.name; }
                 else if (col == 1) { less = a.pid < b.pid; greater = a.pid > b.pid; }
@@ -262,7 +266,7 @@ static void DrawTaskManager() {
             specs->SpecsDirty = false;
         }
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < n; i++) {
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0); ImGui::Text("%s", procs[i].name);
             ImGui::TableSetColumnIndex(1); ImGui::Text("%d", procs[i].pid);
