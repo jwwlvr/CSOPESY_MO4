@@ -11,6 +11,8 @@
 #include <GLFW/glfw3.h>
 #include <algorithm>
 #include <cmath>
+#include <cstdio>
+#include <cstdlib>
 #include <ctime>
 #include <string>
 
@@ -22,6 +24,9 @@ struct Shell {
     bool closeWarning = false;
 
     // add other state vars dito for other features
+    bool showNotes = false;
+    bool showCalc = false;
+    bool showTaskMgr = false;
 };
 
 static Shell shell;
@@ -80,6 +85,23 @@ static void DrawTaskbar() {
     ImGui::BringWindowToDisplayFront(ImGui::GetCurrentWindow());
 
     // add other taskbar features here (start menu, app icons, etc.)
+    // blue button = app is running
+    bool notesOn = shell.showNotes;
+    if (notesOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
+    if (ImGui::Button("NOTES", ImVec2(84, 36))) shell.showNotes = !shell.showNotes;
+    if (notesOn) ImGui::PopStyleColor();
+
+    ImGui::SameLine();
+    bool calcOn = shell.showCalc;
+    if (calcOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
+    if (ImGui::Button("CALC", ImVec2(84, 36))) shell.showCalc = !shell.showCalc;
+    if (calcOn) ImGui::PopStyleColor();
+
+    ImGui::SameLine();
+    bool tasksOn = shell.showTaskMgr;
+    if (tasksOn) ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2f, 0.45f, 0.85f, 1.0f));
+    if (ImGui::Button("TASKS", ImVec2(84, 36))) shell.showTaskMgr = !shell.showTaskMgr;
+    if (tasksOn) ImGui::PopStyleColor();
 
     // PWR button (right side)
     ImGui::SameLine(vp->Size.x - 68);
@@ -118,8 +140,145 @@ static void DrawCloseWarning() {
     ImGui::End();
 }
 
+// type notes sa memory - close and stay lang sya dun
+static void DrawNotes() {
+    if (!shell.showNotes) return;
+    static char text[1024] = "Type your notes here...";
+    ImGui::SetNextWindowSize(ImVec2(400, 280), ImGuiCond_FirstUseEver);
+    ImGui::Begin("Notes", &shell.showNotes);
+    ImGui::InputTextMultiline("##notes", text, sizeof text, ImVec2(-1, -1));
+    ImGui::End();
+}
+
+static std::string Calc(double a, double b, char op) {
+    double r = 0;
+    if (op == '+') r = a + b;
+    else if (op == '-') r = a - b;
+    else if (op == '*') r = a * b;
+    else if (op == '/') {
+        if (b == 0) return "Error";
+        r = a / b;
+    }
+    char buf[64];
+    snprintf(buf, sizeof buf, "%.10g", r);
+    return buf;
+}
+
+// simple calculator
+static void DrawCalculator() {
+    if (!shell.showCalc) return;
+    static std::string display = "0";
+    static double acc = 0;    
+    static char op = 0;        
+    static bool newNum = true;
+    const char* keys[] = { "7", "8", "9", "/",
+                           "4", "5", "6", "*",
+                           "1", "2", "3", "-",
+                           "0", ".", "C", "+" };
+
+    ImGui::Begin("Calculator", &shell.showCalc, ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::SetWindowFontScale(2.0f);
+    ImGui::Text("%s", display.c_str());
+    ImGui::SetWindowFontScale(1.0f);
+    ImGui::Separator();
+
+    for (int i = 0; i < 16; i++) {
+        if (i % 4 != 0) ImGui::SameLine();
+        if (ImGui::Button(keys[i], ImVec2(56, 45))) {
+            char k = keys[i][0];
+            if ((k >= '0' && k <= '9') || k == '.') {
+                if (newNum) {
+                    display = (k == '.') ? "0." : std::string(1, k);
+                    newNum = false;
+                } else if (display.size() < 12 && (k != '.' || display.find('.') == std::string::npos)) {
+                    display += k;
+                }
+            } else if (k == 'C') {
+                display = "0"; acc = 0; op = 0; newNum = true;
+            } else {
+                if (op != 0 && !newNum) display = Calc(acc, atof(display.c_str()), op);
+                acc = atof(display.c_str());
+                op = k;
+                newNum = true;
+            }
+        }
+    }
+    if (ImGui::Button("=", ImVec2(248, 45))) {
+        if (op != 0) {
+            display = Calc(acc, atof(display.c_str()), op);
+            op = 0; acc = 0; newNum = true;
+        }
+    }
+    ImGui::End();
+}
+
+// dummy values lang
+struct Proc {
+    const char* name;
+    int pid;
+    float cpu;
+    float mem;
+};
+
+static void DrawTaskManager() {
+    if (!shell.showTaskMgr) return;
+    static Proc procs[] = {
+        { "System", 4, 1.2f, 0.1f },
+        { "explorer.exe", 1120, 2.5f, 120.4f },
+        { "csopesy_shell.exe", 2048, 4.8f, 85.2f },
+        { "chrome.exe", 3320, 12.3f, 640.7f },
+        { "vscode.exe", 4012, 7.9f, 410.5f },
+        { "spotify.exe", 876, 0.6f, 32.8f },
+        { "camera.exe", 1544, 0.3f, 18.1f },
+        { "zoom.exe", 918, 2.8f, 91.8f },
+        { "notes.exe", 5120, 0.1f, 9.6f },
+        { "settings.exe", 5188, 0.0f, 12.3f },
+        { "calculator.exe", 1009, 1.2f, 54.2f },
+        { "taskmgr.exe", 6004, 1.4f, 24.9f }
+    };
+
+    ImGui::Begin("Task Manager", &shell.showTaskMgr, ImGuiWindowFlags_AlwaysAutoResize);
+    ImGui::Text("Processes (click a column to sort)");
+    if (ImGui::BeginTable("procs", 4, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_Sortable)) {
+        ImGui::TableSetupColumn("Name", ImGuiTableColumnFlags_WidthFixed, 200);
+        ImGui::TableSetupColumn("PID", ImGuiTableColumnFlags_WidthFixed, 60);
+        ImGui::TableSetupColumn("CPU", ImGuiTableColumnFlags_WidthFixed, 70);
+        ImGui::TableSetupColumn("Memory", ImGuiTableColumnFlags_WidthFixed, 90);
+        ImGui::TableHeadersRow();
+
+        // sort when a header is clicked
+        ImGuiTableSortSpecs* specs = ImGui::TableGetSortSpecs();
+        if (specs && specs->SpecsDirty && specs->SpecsCount > 0) {
+            int col = specs->Specs[0].ColumnIndex;
+            bool asc = specs->Specs[0].SortDirection == ImGuiSortDirection_Ascending;
+            std::sort(procs, procs + 10, [col, asc](const Proc& a, const Proc& b) {
+                bool less, greater;
+                if (col == 0) { less = std::string(a.name) < b.name; greater = std::string(b.name) < a.name; }
+                else if (col == 1) { less = a.pid < b.pid; greater = a.pid > b.pid; }
+                else if (col == 2) { less = a.cpu < b.cpu; greater = a.cpu > b.cpu; }
+                else { less = a.mem < b.mem; greater = a.mem > b.mem; }
+                return asc ? less : greater;
+            });
+            specs->SpecsDirty = false;
+        }
+
+        for (int i = 0; i < 10; i++) {
+            ImGui::TableNextRow();
+            ImGui::TableSetColumnIndex(0); ImGui::Text("%s", procs[i].name);
+            ImGui::TableSetColumnIndex(1); ImGui::Text("%d", procs[i].pid);
+            ImGui::TableSetColumnIndex(2); ImGui::Text("%.1f%%", procs[i].cpu);
+            ImGui::TableSetColumnIndex(3); ImGui::Text("%.1f MB", procs[i].mem);
+        }
+        ImGui::EndTable();
+    }
+    ImGui::End();
+}
+
 static void DrawApps() {
-    // add other festures?
+    // add other features?
+    DrawNotes();
+    DrawCalculator();
+    DrawTaskManager();
 }
 
 // Shutdown transition
