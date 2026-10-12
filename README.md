@@ -67,3 +67,23 @@ Run the following command:
 
 ```bash
 cmake -S . -B build -G "MinGW Makefiles" -DCMAKE_MAKE_PROGRAM=C:/msys64/mingw64/bin/mingw32-make.exe -DCMAKE_C_COMPILER=C:/msys64/mingw64/bin/gcc.exe -DCMAKE_CXX_COMPILER=C:/msys64/mingw64/bin/g++.exe
+
+```
+
+### 3. Compile the Application
+
+Run:
+
+```bash
+cmake --build build
+```
+
+Wait for the build to complete successfully. A successful build should report that the `main` target has been built.
+
+### 4. Run the Application
+
+Launch the compiled executable:
+
+```powershell
+.\build\main.exe
+```
