@@ -11,6 +11,7 @@
 #include <GLFW/glfw3.h>
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
@@ -22,6 +23,8 @@ static void OnWindowClose(GLFWwindow* w);
 static std::string ClockString();
 
 // ui elements
+static void DrawBios();
+static void DrawSplash();
 static void DrawDesktop();
 static void DrawTaskbar();
 static void DrawCloseWarning();
@@ -45,6 +48,9 @@ struct Shell {
     bool showNotes = false;
     bool showCalc = false;
     bool showTaskMgr = false;
+    bool booted = false;   // false = BIOS screen still showing
+    bool splashDone = false;   // false = splash screen still showing
+    double splashStart = 0.0;
 };
 
 // dummy values lang
@@ -73,6 +79,8 @@ static int g_selectedProcIdx = -1;
 static Shell shell;
 static const float taskbarHeight = 52.0f; //
 static const float appScale = 1.4f;  // size of the app windows
+static const double biosTime = 17.5;    // seconds
+static const double splashTime = 5.0;   // seconds
 
 // added to display warning if hindi PWR ginamit
 static void OnWindowClose(GLFWwindow* w) {
@@ -91,6 +99,92 @@ static std::string ClockString() {
     char buf[96];
     std::strftime(buf, sizeof buf, "%A, %b %d, %Y | %I:%M:%S %p", &lt);
     return buf;
+}
+
+// BIOS screen, then goes to the desktop
+static void DrawBios() {
+    double t = glfwGetTime();   // seconds since the program started
+    ImGuiViewport* vp = ImGui::GetMainViewport();
+    ImDrawList* dl = ImGui::GetBackgroundDrawList();
+    dl->AddRectFilled(vp->Pos, vp->Pos + vp->Size, IM_COL32(0, 0, 0, 255));
+
+    const char* lines[] = {
+        "CSOPESY Megatrends",
+        "Released: 12/10/2026",
+        "DLSU CCS (C) 2026 CSOPESY Megatrends Inc.",
+        "",
+        "Memory Test:",
+        "Checking RAM : 64000K OK",
+        "",
+        "CPU Type: Pentium III",
+        "BIOS Version: BCN SIT 1989-1994 Special CSOPESY",
+        "Main Processor: Pentium III",
+        "Numeric Processor: Built-in",
+        "",
+        "Primary Master:   420 MB WDCAC2420H",
+        "Primary Slave:    None",
+        "Secondary Master: CD-ROM LTN-385A",
+        "Secondary Slave:  None"
+    };
+    int total = sizeof(lines) / sizeof(lines[0]);
+    int count = (int)(t / 0.7) + 1;   // show one more line every 0.7s
+    if (count > total) count = total;
+    for (int i = 0; i < count; i++)
+        dl->AddText(ImVec2(vp->Pos.x + 14, vp->Pos.y + 12 + i * 18), IM_COL32(220, 220, 220, 255), lines[i]);
+
+    dl->AddText(ImVec2(vp->Pos.x + vp->Size.x * 0.5f - 30, vp->Pos.y + vp->Size.y * 0.35f),
+                IM_COL32(120, 120, 120, 255), "Loading...");
+
+    if (t >= biosTime) {
+        shell.booted = true;
+        shell.splashStart = t;
+    }
+}
+
+// Splash screen after BIOS, then goes to the desktop
+static void DrawSplash() {
+    double t = glfwGetTime() - shell.splashStart;
+    ImGuiViewport* vp = ImGui::GetMainViewport();
+    ImDrawList* dl = ImGui::GetBackgroundDrawList();
+    dl->AddRectFilled(vp->Pos, vp->Pos + vp->Size, IM_COL32(0, 0, 0, 255));
+
+    const char* logo[] = {
+        R"ASCII(____  ____   ___  ____  _____ ____  __   __)ASCII",
+        R"ASCII( / ___|/ ___|  / _ \ |  _ \ | ____|/ ___| \ \ / /)ASCII",
+        R"ASCII(| |    \___ \ | | | || |_) ||  _|  \___ \  \ V / )ASCII",
+        R"ASCII(| |___  ___) || |_| ||  __/ | |___  ___) |  | |  )ASCII",
+        R"ASCII( \____||____/  \___/ |_|    |_____||____/   |_|  )ASCII"
+    };
+    float scale = 1.6f;
+    float fs = ImGui::GetFontSize() * scale;
+    float y = vp->Pos.y + vp->Size.y * 0.25f;
+    for (int i = 0; i < 5; i++) {
+        float w = ImGui::CalcTextSize(logo[i]).x * scale;
+        dl->AddText(ImGui::GetFont(), fs, ImVec2(vp->Pos.x + (vp->Size.x - w) * 0.5f, y + i * fs),
+                    IM_COL32(60, 200, 220, 255), logo[i]);
+    }
+
+    const char* info[] = {
+        "CSOPESY Operating System Emulator v1.0",
+        "Created By: Austria, De Leon, Guererro, and Patricio",
+        "",
+        "Major Output 4 (MO4)"
+    };
+    y += 5 * fs + 30;
+    for (int i = 0; i < 4; i++) {
+        float w = ImGui::CalcTextSize(info[i]).x;
+        dl->AddText(ImVec2(vp->Pos.x + (vp->Size.x - w) * 0.5f, y + i * 18),
+                    IM_COL32(220, 220, 220, 255), info[i]);
+    }
+
+    // loading dots
+    int dots = (int)(t * 2) % 3 + 1;
+    std::string ld = "Loading" + std::string(dots, '.');
+    float lw = ImGui::CalcTextSize("Loading...").x;
+    dl->AddText(ImVec2(vp->Pos.x + (vp->Size.x - lw) * 0.5f, y + 6 * 18 + 40),
+                IM_COL32(60, 220, 60, 255), ld.c_str());
+
+    if (t >= splashTime) shell.splashDone = true;
 }
 
 // Desktop wallpaper + clock
@@ -578,9 +672,15 @@ int main() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        DrawDesktop(); // desktop layer
-        DrawApps(); // applications
-        DrawTaskbar(); // taskbar (+ PWR)
+        if (!shell.booted) {
+            DrawBios(); // bios screen
+        } else if (!shell.splashDone) {
+            DrawSplash(); // splash screen
+        } else {
+            DrawDesktop(); // desktop layer
+            DrawApps(); // applications
+            DrawTaskbar(); // taskbar (+ PWR)
+        }
         if (shell.shuttingDown) DrawShutdown(window);  // overlay
         if (shell.closeWarning) DrawCloseWarning(); // close warning
 
